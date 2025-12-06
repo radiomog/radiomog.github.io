@@ -2,767 +2,232 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Unemployment Radio – The Mog Hour</title>
+  <title>Unemployment Radio - The Mog Hour</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root {
-      --bg: #050508;
-      --bg-alt: #11111a;
-      --accent: #ff4b7a;
-      --accent-soft: rgba(255, 75, 122, 0.12);
-      --text-main: #f5f5f7;
-      --text-muted: #a0a0b8;
-      --border-subtle: rgba(255,255,255,0.08);
-      --radius-lg: 18px;
-      --radius-xl: 26px;
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.65);
-      --shadow-chip: 0 8px 18px rgba(0,0,0,0.45);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Inter", sans-serif;
-      background: radial-gradient(circle at top, #181824 0, #050508 45%);
-      color: var(--text-main);
-      min-height: 100vh;
-      line-height: 1.5;
+      background-color: #fdfbe4;
+      color: #000000;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
-
     a {
-      color: inherit;
-      text-decoration: none;
+      color: #0000ee;
     }
-
+    a:visited {
+      color: #551a8b;
+    }
     .page {
-      max-width: 1100px;
+      max-width: 800px;
       margin: 0 auto;
-      padding: 16px 16px 56px;
+      padding: 10px;
+      border: 3px double #000000;
+      background-color: #ffffff;
     }
-
-    /* HEADER / NAV */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-          to bottom,
-          rgba(5, 5, 8, 0.9),
-          rgba(5, 5, 8, 0.75),
-          transparent
-      );
+    .header {
+      text-align: center;
     }
-
-    .nav-shell {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 10px 16px 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-logo {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 0%, #ff9bb8, #ff4b7a 45%, #220319);
-      box-shadow: var(--shadow-chip);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 700;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-title {
-      font-size: 15px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-
-    .brand-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 14px;
-    }
-
-    .nav-link {
-      padding: 6px 10px;
-      border-radius: 999px;
-      color: var(--text-muted);
-      border: 1px solid transparent;
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-        transform 0.12s ease;
-      cursor: pointer;
-      background: transparent;
-    }
-
-    .nav-link:hover {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.03);
-      border-color: var(--border-subtle);
-      transform: translateY(-1px);
-    }
-
-    .nav-link.primary {
-      background: var(--accent);
-      color: #050508;
-      font-weight: 600;
-      box-shadow: 0 8px 24px rgba(255, 75, 122, 0.35);
-    }
-
-    .nav-link.primary:hover {
-      background: #ff668f;
-      border-color: transparent;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(5, 5, 8, 0.7);
-      cursor: pointer;
-      padding: 5px 7px;
-    }
-
-    .hamburger span {
-      display: block;
-      height: 2px;
-      border-radius: 999px;
-      background: var(--text-main);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
-    }
-
-    .nav-links-mobile {
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-      padding: 4px 16px 10px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .nav-links-mobile .nav-link {
-      width: fit-content;
-    }
-
-    /* HERO / MAIN CARD */
-    .hero {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .hero-main {
-      background: radial-gradient(circle at top left, #24243a, #11111a);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 20px 22px 22px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pill-row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .pill {
-      font-size: 11px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: var(--text-muted);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pill-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #15ff99;
-      box-shadow: 0 0 12px rgba(21, 255, 153, 0.6);
-    }
-
-    .hero-title {
-      font-size: clamp(26px, 4vw, 32px);
-      margin-bottom: 6px;
-      letter-spacing: 0.02em;
-    }
-
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      max-width: 80%;
-      margin-bottom: 18px;
-    }
-
-    .hero-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-
-    .btn {
-      border-radius: 999px;
-      border: none;
-      padding: 10px 18px;
-      font-size: 14px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 500;
-      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.1s ease,
-        opacity 0.1s ease;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #050508;
-      box-shadow: 0 10px 28px rgba(255, 75, 122, 0.4);
-    }
-
-    .btn-primary:hover {
-      background: #ff668f;
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: rgba(0, 0, 0, 0.4);
-      color: var(--text-main);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    .btn-icon {
-      font-size: 17px;
-    }
-
-    .now-playing {
-      margin-top: 6px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .now-playing span {
-      color: var(--accent);
-    }
-
-    .player-shell {
-      margin-top: 18px;
-      padding: 12px;
-      border-radius: var(--radius-lg);
-      background: radial-gradient(circle at 20% 0%, #2a2236, #0b0b12);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .player-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .player-embed {
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-    }
-
-    .hero-tagline {
-      margin-top: 18px;
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .hero-tagline strong {
-      color: var(--text-main);
-    }
-
-    .hero-accent-orb {
-      position: absolute;
-      right: -80px;
-      top: -50px;
-      width: 230px;
-      height: 230px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 0%, #ffbdd1, #ff4b7a, #1c0411);
-      opacity: 0.12;
-      filter: blur(1px);
-      pointer-events: none;
-    }
-
-    /* SIDE CARD */
-    .side-card {
-      background: rgba(7, 7, 14, 0.95);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 16px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .side-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .side-title {
-      font-size: 14px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    .side-badge {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: var(--text-muted);
-    }
-
-    .show-card {
-      margin-top: 6px;
-      padding: 12px;
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, #181824, #090911);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .show-label {
-      font-size: 11px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
+    .header h1 {
+      font-size: 32px;
       margin-bottom: 4px;
-    }
-
-    .show-name {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-
-    .show-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .show-desc {
-      font-size: 13px;
-      color: var(--text-main);
-      margin-bottom: 10px;
-    }
-
-    .schedule-line {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .schedule-line span {
-      color: var(--accent);
-      font-weight: 500;
-    }
-
-    .mini-links {
-      margin-top: 10px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 11px;
-    }
-
-    .mini-link {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease;
-    }
-
-    .mini-link:hover {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text-main);
-    }
-
-    /* LOWER SECTIONS */
-    .sections {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
-      gap: 24px;
-    }
-
-    .card {
-      background: rgba(7, 7, 14, 0.92);
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 16px 18px 18px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .card-title {
-      font-size: 14px;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 8px;
+      letter-spacing: 2px;
     }
-
-    .card-heading {
-      font-size: 18px;
-      margin-bottom: 6px;
+    .subtitle {
+      font-size: 12px;
+      color: #444444;
     }
-
-    .card-body {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
+    .nav {
+      text-align: center;
+      margin: 15px 0;
     }
-
-    .list {
-      margin-top: 6px;
-      font-size: 13px;
-      color: var(--text-muted);
-      padding-left: 16px;
-    }
-
-    .list li {
-      margin-bottom: 4px;
-    }
-
-    footer {
-      margin-top: 32px;
-      font-size: 11px;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    footer a {
+    .nav a {
+      margin: 0 6px;
+      font-size: 12px;
       text-decoration: underline;
-      text-decoration-style: dotted;
-      text-decoration-thickness: 1px;
     }
-
-    /* Responsive */
-    @media (max-width: 840px) {
-      .hero {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .sections {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-subtitle {
-        max-width: 100%;
-      }
+    hr {
+      border: 0;
+      border-top: 2px solid #000000;
     }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hamburger {
-        display: inline-flex;
-      }
-
-      .nav-links-mobile.open {
-        display: flex;
-      }
-
-      .page {
-        padding-inline: 14px;
-      }
-
-      .hero-main {
-        padding: 18px 16px 18px;
-      }
-
-      .side-card {
-        padding: 14px 14px 16px;
-      }
+    .marquee-box {
+      border: 2px dashed #ff0000;
+      padding: 6px;
+      margin: 10px 0;
+      background-color: #fff7c2;
+      font-size: 12px;
     }
-
-    @media (max-width: 480px) {
-      .hero {
-        margin-top: 22px;
-      }
-
-      .hero-title {
-        font-size: 22px;
-      }
-
-      .btn {
-        width: 100%;
-        justify-content: center;
-      }
+    .section-title {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 4px;
+    }
+    .content {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .player-box {
+      border: 2px solid #000000;
+      background-color: #e3ffe7;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 13px;
+    }
+    .warning {
+      font-size: 11px;
+      color: #aa0000;
+    }
+    .table-schedule {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+    .table-schedule th,
+    .table-schedule td {
+      border: 1px solid #000000;
+      padding: 4px;
+      text-align: left;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 10px;
+      color: #555555;
+    }
+    .blink {
+      animation: blink 1s step-start 0s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-shell">
-      <div class="brand">
-        <div class="brand-logo">UR</div>
-        <div class="brand-text">
-          <div class="brand-title">Unemployment Radio</div>
-          <div class="brand-sub">Broadcasting from your “what am I doing with my life?” era</div>
-        </div>
+  <div class="page">
+    <div class="header">
+      <h1>UNEMPLOYMENT RADIO</h1>
+      <div class="subtitle">
+        <span class="blink">***</span>
+        Broadcasting live from the “what am I doing with my life?” era
+        <span class="blink">***</span>
       </div>
-
-      <nav class="nav-links" aria-label="Main navigation">
-        <button class="nav-link" data-scroll="#home">Home</button>
-        <button class="nav-link" data-scroll="#schedule">Schedule</button>
-        <button class="nav-link" data-scroll="#about">About</button>
-        <button class="nav-link primary" data-scroll="#listen">Listen Live</button>
-      </nav>
-
-      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
 
-    <nav class="nav-links-mobile" aria-label="Mobile navigation">
-      <button class="nav-link" data-scroll="#home">Home</button>
-      <button class="nav-link" data-scroll="#schedule">Schedule</button>
-      <button class="nav-link" data-scroll="#about">About</button>
-      <button class="nav-link primary" data-scroll="#listen">Listen Live</button>
-    </nav>
-  </header>
+    <div class="nav">
+      <a href="#listen">[ Listen Live ]</a> |
+      <a href="#mog-hour">[ The Mog Hour ]</a> |
+      <a href="#about">[ About ]</a> |
+      <a href="#contact">[ Contact(?) ]</a>
+    </div>
 
-  <main class="page">
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
-      <div class="hero-main">
-        <div class="hero-accent-orb" aria-hidden="true"></div>
+    <hr />
 
-        <div class="pill-row">
-          <div class="pill">
-            <span class="pill-dot"></span>
-            <span>Soft launch mode</span>
-          </div>
-          <div class="pill">
-            <span>New show:</span>
-            <strong>The Mog Hour</strong>
-          </div>
+    <div class="marquee-box">
+      <!-- fake marquee vibe; real marquee is deprecated but this is safer -->
+      <strong>NOW LOADING:</strong>
+      The Mog Hour · Episode 001 · Soft launch · Mild panic · Good tunes
+    </div>
+
+    <a id="listen"></a>
+    <div class="section-title">Listen Live</div>
+    <div class="content">
+      <p>
+        This is where the actual radio stream will go. For now, it’s just pretending.
+      </p>
+
+      <div class="player-box">
+        <strong>Unemployment Radio Player (Coming Soon)</strong><br /><br />
+        <!--
+          When you have your real radio stream (Caster.fm, Listen2MyRadio, etc.),
+          replace the iframe below with the embed code they give you.
+        -->
+        <iframe
+          src="https://example.com/your-stream-player"
+          width="100%"
+          height="80"
+          frameborder="0"
+          title="Fake Mog Player"
+        >
+        </iframe>
+        <div class="warning">
+          If you’re seeing this grey box, it means the stream isn’t wired up yet.
+          That’s okay. We’re all figuring things out.
         </div>
-
-        <h1 class="hero-title">Welcome to <span style="color: var(--accent);">Unemployment Radio</span>.</h1>
-        <p class="hero-subtitle">
-          A lo-fi, high-feels online station for the in-between times. Music, stories,
-          and gentle chaos from <strong>The Mog Hour</strong> and whatever else you
-          dream up while procrastinating your LinkedIn updates.
-        </p>
-
-        <div class="hero-controls" id="listen">
-          <button class="btn btn-primary">
-            <span class="btn-icon">▶</span>
-            <span>Listen Live</span>
-          </button>
-          <button class="btn btn-ghost" data-scroll="#schedule">
-            View Schedule
-          </button>
-        </div>
-
-        <div class="now-playing">
-          Up next: <span>The Mog Hour · Episode 001</span>
-        </div>
-
-        <div class="player-shell" aria-label="Live audio player">
-          <div class="player-label">Live Stream Player</div>
-          <div class="player-embed">
-            <!--
-              TODO: Replace this iframe with the real embed code
-              from your streaming host (Caster.fm, Listen2MyRadio, etc.)
-            -->
-            <iframe
-              src="https://example.com/your-stream-player"
-              width="100%"
-              height="150"
-              frameborder="0"
-              allow="autoplay"
-              title="Unemployment Radio Player"
-            ></iframe>
-          </div>
-        </div>
-
-        <p class="hero-tagline">
-          Broadcasting for the <strong>jobless, the restless, and the “figuring it out” crew.</strong>
-          Tune in, hang out, and pretend this is productive.
-        </p>
       </div>
+    </div>
 
-      <!-- SIDE CARD -->
-      <aside class="side-card">
-        <div class="side-header">
-          <div class="side-title">Now launching</div>
-          <div class="side-badge">Season 0 · Soft Open</div>
-        </div>
+    <a id="mog-hour"></a>
+    <div class="section-title">The Mog Hour (Flagship Show)</div>
+    <div class="content">
+      <p>
+        <strong>The Mog Hour</strong> is a 1-hour show hosted by Mog: part music,
+        part unemployment spiral, part cozy friend hang.
+      </p>
+      <p>
+        Expect: songs you actually like, stories from the in-between times, and the
+        occasional “what if I just moved to a farm” moment.
+      </p>
 
-        <div class="show-card">
-          <div class="show-label">Flagship Show</div>
-          <div class="show-name">The Mog Hour</div>
-          <div class="show-meta">Hosted by: Mog · Duration: 60 minutes</div>
-          <div class="show-desc">
-            A one-hour weekly dive into music, stories, unemployment brain, and whatever
-            you’re spiraling about this week. Half confessional, half cozy hang.
-          </div>
-          <div class="schedule-line">
-            First airing: <span>TBD — weekly at your chosen time</span>
-          </div>
-        </div>
+      <table class="table-schedule">
+        <tr>
+          <th>Show</th>
+          <th>Day</th>
+          <th>Time</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>The Mog Hour</td>
+          <td>TBD</td>
+          <td>TBD</td>
+          <td>Probably when you should be doing something else.</td>
+        </tr>
+      </table>
+    </div>
 
-        <div class="mini-links">
-          <button class="mini-link" data-scroll="#about">What is Unemployment Radio?</button>
-          <button class="mini-link" data-scroll="#schedule">Future shows & ideas</button>
-          <button class="mini-link" data-scroll="#archive">Episode archive (soon)</button>
-        </div>
-      </aside>
-    </section>
+    <a id="about"></a>
+    <div class="section-title">About Unemployment Radio</div>
+    <div class="content">
+      <p>
+        Unemployment Radio is a tiny online radio “station” for people who are somewhere
+        between jobs, plans, and identities.
+      </p>
+      <p>
+        It’s not trying to be professional. It’s trying to be honest, a little funny,
+        and a place to put all the feelings that don’t fit in a LinkedIn update.
+      </p>
+    </div>
 
-    <!-- LOWER SECTIONS -->
-    <section id="schedule" class="sections">
-      <div class="card">
-        <h2 class="card-title">Schedule</h2>
-        <h3 class="card-heading">Unemployment Radio · Programming</h3>
-        <p class="card-body">
-          For now, it’s simple: one hour, one host, one show. As life (and the station)
-          evolves, this is where future slots and guest shows will live.
-        </p>
+    <a id="contact"></a>
+    <div class="section-title">Contact / Future Stuff</div>
+    <div class="content">
+      <p>
+        One day this might have:
+      </p>
+      <ul>
+        <li>an email address</li>
+        <li>a way to send voice notes or stories</li>
+        <li>a proper schedule</li>
+        <li>maybe other shows??</li>
+      </ul>
+      <p>
+        For now, just remember this URL and come back when you hear rumours that
+        Unemployment Radio is actually on the air.
+      </p>
+    </div>
 
-        <ul class="list">
-          <li><strong>The Mog Hour</strong> – 1× per week, 60 minutes</li>
-          <li>Mix of music, stories, unemployment musings, and friend drop-ins</li>
-          <li>Replays / archives will eventually live in the “Archive” section below</li>
-        </ul>
+    <hr />
 
-        <p class="card-body" style="margin-top: 8px;">
-          Once you lock your time (e.g. <strong>Thursdays, 8–9pm ET</strong>), edit this
-          text in the file so your listeners know when to show up.
-        </p>
-      </div>
+    <div class="footer">
+      <div>© <span id="year"></span> Unemployment Radio · All rights reserved (probably).</div>
+      <div>Best experienced late at night with headphones and mild existential dread.</div>
+    </div>
+  </div>
 
-      <div id="about" class="card">
-        <h2 class="card-title">About</h2>
-        <h3 class="card-heading">What is Unemployment Radio?</h3>
-        <p class="card-body">
-          Unemployment Radio is an online station for in-between seasons: job hunting, career
-          pivots, weird Tuesdays, and those days where you’re technically “free” but emotionally
-          overloaded.
-        </p>
-        <p class="card-body">
-          It starts with <strong>The Mog Hour</strong>, but is built to grow into a full
-          little universe of shows — music-driven, story-driven, and very human.
-        </p>
-      </div>
-    </section>
-
-    <section id="archive" class="sections" style="margin-top: 18px;">
-      <div class="card">
-        <h2 class="card-title">Archive</h2>
-        <h3 class="card-heading">Episode log (coming soon)</h3>
-        <p class="card-body">
-          Once episodes are recorded, you can:
-        </p>
-        <ul class="list">
-          <li>Host them on a podcast platform (or just as MP3s) and link them here</li>
-          <li>List episodes like: <strong>EP001 – Soft Launch / Panic &amp; Playlists</strong></li>
-          <li>Add show notes, tracklists, and any chaotic footnotes</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2 class="card-title">More “Pages”</h2>
-        <h3 class="card-heading">How to expand later</h3>
-        <p class="card-body">
-          This is technically a single page, but the navigation and hamburger menu already
-          support more sections. To add a new “page”:
-        </p>
-        <ul class="list">
-          <li>Duplicate a <code>&lt;section&gt;</code> block and give it a new <code>id</code></li>
-          <li>Add a matching nav button with <code>data-scroll="#yourId"</code></li>
-          <li>Fill it with guest info, contact details, submissions, whatever.</li>
-        </ul>
-      </div>
-    </section>
-
-    <footer>
-      <span>© <span id="year"></span> Unemployment Radio · All rights reserved, sort of.</span>
-      <span>Built with love, doubt, and background
+  <script>
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
