@@ -2,317 +2,428 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Unemployment Radio – Listen Live</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unemployment Radio – Launch Pad of the Free Company</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@400;500;600&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* === GLOBAL === */
+    :root {
+      --ink: #0f0a07;
+      --stone: #f3f0e9;
+      --parchment: #f8f5ec;
+      --ember: #ff7a1a;
+      --garnet: #b02024;
+      --azure: #1f4b99;
+      --bronze: #b1843a;
+      --shadow: rgba(15, 10, 7, 0.12);
+      --panel: rgba(255, 255, 255, 0.62);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
-      background-color: #050505;
-      color: #ffffff;
-      font-family: "Comic Sans MS", "Comic Sans", Geneva, sans-serif;
-      cursor: crosshair;
-      /* grainy photocopy background */
-      background-image:
-        repeating-linear-gradient(
-          0deg,
-          rgba(255, 255, 255, 0.02) 0px,
-          rgba(255, 255, 255, 0.02) 1px,
-          transparent 1px,
-          transparent 3px
-        ),
-        repeating-linear-gradient(
-          -45deg,
-          rgba(255, 255, 255, 0.01) 0px,
-          rgba(255, 255, 255, 0.01) 2px,
-          transparent 2px,
-          transparent 5px
-        );
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 10% 10%, #fff8e8, #f0e7d6 35%, #e1d7c3 65%, #d8cfbd);
+      color: var(--ink);
+      min-height: 100vh;
+      text-rendering: optimizeLegibility;
     }
 
-    a { color: #ffea00; }
-    a:visited { color: #ffea00; }
+    .site-shell {
+      max-width: 1200px;
+      margin: 0 auto 64px;
+      padding: 18px 20px 40px;
+    }
 
-    /* === "ZINE" WRAPPER WITH FAKE PAPER LAYERS === */
-    .page-wrapper {
+    /* top bar */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 252, 245, 0.9));
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px var(--shadow), inset 0 0 0 2px #f9e6d5;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: conic-gradient(from 160deg, var(--garnet), var(--ember), #ffd36b, var(--garnet));
+      border: 2px solid var(--ink);
       position: relative;
-      max-width: 900px;
-      margin: 32px auto 48px;
-      padding: 0 6px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      overflow: hidden;
     }
 
-    /* fake paper behind, slightly offset like glued layers */
-    .page-wrapper::before {
-      content: "";
+    .brand-mark::after {
+      content: "UR";
       position: absolute;
-      inset: -14px -10px;
-      background: #111111;
-      border: 3px solid #ffffff;
-      transform: rotate(-1.5deg);
-      opacity: 0.9;
-      z-index: 0;
-    }
-
-    .page-wrapper::after {
-      content: "";
-      position: absolute;
-      inset: -28px 20px 10px -20px;
-      border: 2px dashed #ff0000;
-      opacity: 0.5;
-      transform: rotate(1.3deg);
-      z-index: 0;
-    }
-
-    /* tape at the corners */
-    .tape {
-      position: absolute;
-      width: 70px;
-      height: 16px;
-      background: linear-gradient(135deg, #f5f5f5 0%, #dcdcdc 100%);
-      box-shadow: 0 0 6px rgba(0,0,0,0.6);
-      opacity: 0.85;
-      z-index: 3;
-    }
-    .tape.top-left {
-      top: -10px;
-      left: 28px;
-      transform: rotate(-8deg);
-    }
-    .tape.top-right {
-      top: -12px;
-      right: 34px;
-      transform: rotate(6deg);
-    }
-
-    /* staple marks */
-    .staple {
-      position: absolute;
-      width: 22px;
-      height: 2px;
-      background: #c0c0c0;
-      box-shadow: 0 0 2px #000;
-      z-index: 3;
-    }
-    .staple.one {
-      top: -2px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-8deg);
-    }
-    .staple.two {
-      bottom: 4px;
-      right: 60px;
-      transform: rotate(12deg);
-    }
-
-    /* === MAIN PAGE === */
-    .page {
-      position: relative;
-      z-index: 1;
-      border: 3px solid #ffffff;
-      outline: 4px solid #ff0000;
-      background-color: #000000;
-      padding: 18px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.9);
-    }
-
-    /* === HEADER === */
-    .header {
-      text-align: center;
-      margin-bottom: 4px;
-    }
-
-    .header h1 {
-      font-size: 36px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #ffea00;
-      padding: 4px 12px;
-      border: 3px solid #ffffff;
-      display: inline-block;
-      background: #000000;
-      text-shadow:
-        2px 2px 0 #000,
-        -2px -2px 0 #000,
-        0 0 8px #ff0000;
-      /* crooked title ONLY */
-      transform: rotate(-3deg);
-    }
-
-    .header h1:hover {
-      transform: rotate(-4deg) scale(1.03);
-    }
-
-    .subtitle {
-      font-size: 11px;
-      margin-top: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    .blink {
-      animation: blink 1s step-start infinite;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-
-    .under-construction {
-      font-size: 11px;
-      color: #ffea00;
-      margin-top: 5px;
-      text-transform: uppercase;
-    }
-
-    /* === NAVIGATION === */
-    .nav {
-      text-align: center;
-      margin: 18px 0 12px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
-    .nav a {
-      display: inline-block;
-      padding: 3px 8px;
-      margin: 2px 3px;
-      border: 2px solid #ffffff;
-      background: #111;
-      text-decoration: none;
-      letter-spacing: 0.5px;
-      box-shadow: 2px 2px 0 #ff0000;
-    }
-
-    .nav a:hover {
-      background: #ffea00;
-      color: #000;
-      box-shadow: 3px 3px 0 #ff0000;
-    }
-
-    hr {
-      border: none;
-      border-top: 2px solid #ff0000;
-      margin: 20px 0;
-    }
-
-    /* === BREAKING NEWS === */
-    .marquee-box {
-      border: 2px solid #ff0000;
-      padding: 8px;
-      margin: 10px 0;
-      background-color: #1a0000;
-      color: #ffcccc;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 12px;
-      box-shadow: inset 0 0 12px rgba(255, 0, 0, 0.4);
-    }
-
-    /* === SECTION TITLES === */
-    .section-title {
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-family: 'UnifrakturCook', cursive;
+      color: var(--stone);
+      text-shadow: 0 2px 6px rgba(0,0,0,0.35);
       font-size: 18px;
-      font-weight: bold;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .top-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      padding: 10px 14px;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      background: linear-gradient(120deg, #fff, #fff6e9);
+      box-shadow: 0 4px 0 var(--ink);
+      transition: transform 150ms ease, box-shadow 150ms ease, background 200ms ease;
       text-transform: uppercase;
-      margin-top: 22px;
-      margin-bottom: 4px;
-      color: #ffffff;
-      padding-bottom: 3px;
-      border-bottom: 3px solid #ff0000;
-      letter-spacing: 1px;
+      letter-spacing: 0.04em;
+      font-size: 12px;
     }
 
-    .content {
-      font-size: 13px;
-      line-height: 1.55;
-      margin-top: 6px;
+    .top-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--ink);
+      background: linear-gradient(120deg, #fff4e4, #ffd9a6);
     }
 
-    /* === PLAYER BOX (straight, solid) === */
+    /* hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      padding: 22px;
+      background: linear-gradient(135deg, #ff9c3f, #ff6b24 45%, #f0423d);
+      border-radius: 30px;
+      border: 3px solid var(--ink);
+      box-shadow: 0 24px 40px rgba(240, 66, 61, 0.35), inset 0 0 0 4px #ffe4c7;
+      color: #1b0d05;
+    }
+
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 12px;
+      margin: 0 0 10px;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(34px, 4vw, 48px);
+      line-height: 1.05;
+      font-family: 'UnifrakturCook', cursive;
+      letter-spacing: 0.04em;
+      text-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .hero p { margin: 0 0 18px; font-size: 16px; line-height: 1.5; }
+
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .btn {
+      text-decoration: none;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 12px 16px;
+      border-radius: 14px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 6px 0 rgba(0,0,0,0.35);
+      transition: transform 150ms ease, box-shadow 150ms ease, background 200ms ease, color 200ms ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .btn.primary { background: #1b0d05; color: #ffe4c7; }
+    .btn.ghost { background: #ffe4c7; color: #1b0d05; }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 0 rgba(0,0,0,0.38); }
+
+    .hero-emblem {
+      background: radial-gradient(circle at 30% 30%, #ffe8c9, #fbd7a3 45%, #f0c68d 70%, #e3b275);
+      border-radius: 24px;
+      border: 3px solid var(--ink);
+      box-shadow: inset 0 0 0 4px #fff2de, 0 14px 30px rgba(0,0,0,0.28);
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+      display: grid;
+      place-items: center;
+    }
+
+    .shield {
+      width: 180px;
+      height: 220px;
+      background: linear-gradient(180deg, #1f4b99, #0d2b5f);
+      clip-path: polygon(50% 0%, 92% 16%, 92% 64%, 50% 100%, 8% 64%, 8% 16%);
+      border: 6px solid #f7e6c8;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.35), inset 0 0 18px rgba(255,255,255,0.3);
+      position: relative;
+    }
+
+    .shield::before {
+      content: "Listen Live";
+      position: absolute;
+      inset: 18% 12% auto 12%;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: #ffe9c9;
+      text-align: center;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+    }
+
+    .shield::after {
+      content: "⚔";
+      position: absolute;
+      left: 50%;
+      top: 44%;
+      transform: translate(-50%, -50%);
+      font-size: 54px;
+      color: #f0dcb4;
+      text-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    }
+
+    /* content cards */
+    .grid {
+      margin-top: 28px;
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: var(--panel);
+      border: 2px solid var(--ink);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 12px 20px var(--shadow), inset 0 0 0 3px rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(3px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 1px dashed rgba(15, 10, 7, 0.18);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 span.icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255, 186, 95, 0.25), rgba(255, 127, 80, 0.35));
+      border: 2px solid var(--ink);
+      box-shadow: 0 6px 12px var(--shadow);
+    }
+
+    .card p { margin: 0; line-height: 1.6; font-size: 14px; }
+
+    /* listen section */
+    #listen {
+      margin-top: 32px;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(31, 75, 153, 0.1), rgba(176, 32, 36, 0.08), rgba(255, 204, 153, 0.4));
+      border-radius: 24px;
+      border: 2px solid var(--ink);
+      box-shadow: 0 12px 22px var(--shadow), inset 0 0 0 3px #fff2de;
+    }
+
+    #listen h2 {
+      margin: 0 0 10px;
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+    }
+
     .player-box {
-      border: 2px solid #ffffff;
-      background-color: #0d0d0d;
-      padding: 12px;
-      margin: 12px 0;
-      box-shadow: 0 0 10px rgba(255,255,255,0.12);
+      margin-top: 16px;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 18px var(--shadow);
+      background: #0f1118;
+      position: relative;
     }
 
-    .player-box iframe {
-      background: #111;
-      border: 2px solid #ff0000;
-      box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.35);
+    .player-heading {
+      margin: 0;
+      padding: 12px 14px;
+      background: linear-gradient(120deg, #1f4b99, #112a59);
+      color: #f4e8d3;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    iframe {
+      width: 100%;
+      border: none;
+      display: block;
     }
 
     .warning {
-      font-size: 11px;
-      color: #ff9999;
-      margin-top: 4px;
-      font-style: italic;
+      margin: 0;
+      padding: 10px 12px;
+      background: #1c1e27;
+      color: #e8d7c0;
+      font-size: 13px;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    .footer {
+    /* footer */
+    footer {
+      margin-top: 30px;
       text-align: center;
-      margin-top: 24px;
-      font-size: 10px;
-      color: #aaaaaa;
+      font-size: 12px;
+      color: rgba(15, 10, 7, 0.7);
+      font-family: 'Cinzel', serif;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-emblem { order: -1; }
     }
   </style>
 </head>
-
 <body>
-  <div class="page-wrapper">
-    <div class="tape top-left"></div>
-    <div class="tape top-right"></div>
-    <div class="staple one"></div>
-    <div class="staple two"></div>
-
-    <div class="page">
-      <div class="header">
-        <h1>UNEMPLOYMENT RADIO</h1>
-        <div class="subtitle">
-          <span class="blink">***</span>
-          online radio by the unemployed, for the aspiring unemployed
-          <span class="blink">***</span>
-        </div>
-        <div class="under-construction">
-          🚧 SITE, LIFE, AND CAREER UNDER CONSTRUCTION 🚧
-        </div>
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <span>Unemployment Radio</span>
       </div>
+      <nav class="top-links">
+        <a href="index.html">Listen Live</a>
+        <a href="about.html">About</a>
+        <a href="mog-hour.html">The Mog Hour</a>
+        <a href="join.html">Join Us</a>
+        <a href="sponsors.html">Sponsors</a>
+      </nav>
+    </header>
 
-      <div class="nav">
-        <a href="index.html">[ LISTEN LIVE ]</a>
-        <a href="about.html">[ ABOUT ]</a>
-        <a href="mog-hour.html">[ THE MOG HOUR ]</a>
-        <a href="join.html">[ JOIN US ]</a>
-        <a href="sponsors.html">[ SPONSORS ]</a>
-      </div>
-
-      <hr />
-
-      <div class="marquee-box">
-        <strong>BREAKING NEWS:</strong>
-        You are wasting your incredible talents and brainpower on something that isn’t fulfilling, meaningful, or impactful.
-        Your employer doesn't care about you. You know deep inside that if you disappeared tomorrow, your team would replace you with a slide deck made by chatgpt.
-      </div>
-
-      <div class="section-title">Listen Live</div>
-      <div class="content">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Free company dispatch</p>
+        <h1>Launch pad for knights between quests</h1>
         <p>
-          One day soon, you’ll click play and actually hear Unemployment Radio.
-          For now, this is the spiritual waiting room where the punk inside you keeps whispering
-          that you were never meant to clock in...
+          Gather in the great hall of unemployed dreamers. We’re forging a signal built by the folks who said
+          “nay” to the throne room meeting invite and “aye” to their next adventure.
         </p>
-
-        <div class="player-box">
-          <strong>Unemployment Radio Player (Coming Soon)</strong><br><br>
-          <!-- Web radio coming soon. Meanwhile, the webcam feed below is wired up through VDO.Ninja. -->
-          <iframe src="https://vdo.ninja/?view=unemploymentradio&autostart&transparent" width="100%" height="260" frameborder="0" allow="autoplay; camera; microphone; fullscreen; display-capture"></iframe>
-          <div class="warning">If the box is empty, the host hasn’t started streaming their webcam yet.</div>
+        <div class="hero-actions">
+          <a class="btn primary" href="#listen">⚔ Begin the broadcast</a>
+          <a class="btn ghost" href="about.html">📜 Read the codex</a>
         </div>
       </div>
-
-      <hr />
-
-      <div class="footer">
-        <div>© 2025 Unemployment Radio · All rights reserved, unlike your job security.</div>
-        <div>Best consumed during and after emotionally checking out.</div>
+      <div class="hero-emblem" aria-hidden="true">
+        <div class="shield"></div>
       </div>
+    </section>
+
+    <div class="grid" style="margin-top: 24px;">
+      <article class="card">
+        <h3><span class="icon">🪶</span>Hello &amp; welcome</h3>
+        <p>
+          Step into our medieval launchpad. The torches are lit, the bench is warm, and the guild is glad
+          you’re here while the stream readies itself.
+        </p>
+      </article>
+      <article class="card">
+        <h3><span class="icon">🎯</span>Our goal is simple</h3>
+        <p>
+          Help every weary knight feel confident, connected, and just a bit ridiculous about their next move.
+          We’re crafting tools and rituals that don’t get in the way of your questing.
+        </p>
+      </article>
     </div>
+
+    <section class="grid" style="margin-top: 12px;">
+      <article class="card">
+        <h3><span class="icon">🧭</span>What you’ll master</h3>
+        <p>
+          How to live your values as your default state. The core arts will help you thrive and ready your
+          banner for the big tournaments that matter.
+        </p>
+      </article>
+      <article class="card">
+        <h3><span class="icon">🛡️</span>What we stand for</h3>
+        <p>
+          Not your typical guild hall. We’re an edge space for shape-shifters, contrarians, and builders
+          looking for a place to be real.
+        </p>
+      </article>
+      <article class="card">
+        <h3><span class="icon">🎧</span>When we gather</h3>
+        <p>
+          There’s no schedule perfect enough to summon everyone. Stay close to the feed and raise a chalice
+          whenever the red light glows.
+        </p>
+      </article>
+    </section>
+
+    <section id="listen">
+      <h2>Hear the signal</h2>
+      <p>
+        One day soon, you’ll click play and actually hear Unemployment Radio. For now, this is the great hall’s
+        waiting room where the bard inside keeps whispering that you were never meant to clock in.
+      </p>
+      <div class="player-box">
+        <div class="player-heading">Unemployment Radio Player — Coming Soon</div>
+        <iframe src="https://vdo.ninja/?view=unemploymentradio&autostart&transparent" height="260" allow="autoplay; camera; microphone; fullscreen; display-capture"></iframe>
+        <p class="warning">If the box is empty, the host hasn’t started streaming their webcam yet.</p>
+      </div>
+    </section>
+
+    <footer>
+      © 2025 Unemployment Radio · Forged for wanderers between gigs.
+    </footer>
   </div>
 </body>
 </html>
