@@ -2,365 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Unemployment Radio - Funk your job, punk!</title>
+  <title>Unemployment Radio – Punk Mode</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    /* GLOBAL PUNK VIBE */
+    /* === GLOBAL === */
     body {
-      background-color: #050008;
+      background-color: #0a0a0a;
       color: #ffffff;
-      font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, sans-serif;
+      font-family: "Comic Sans MS", "Comic Sans", Geneva, sans-serif;
       cursor: crosshair;
+
+      /* gritty photocopy texture */
       background-image:
-        radial-gradient(circle at 10% 0%, rgba(255, 0, 119, 0.8) 0, transparent 55%),
-        radial-gradient(circle at 90% 100%, rgba(0, 255, 157, 0.8) 0, transparent 55%),
         repeating-linear-gradient(
-          -35deg,
-          rgba(255, 255, 255, 0.04) 0px,
-          rgba(255, 255, 255, 0.04) 3px,
-          transparent 3px,
-          transparent 6px
+          0deg,
+          rgba(255, 255, 255, 0.015) 0px,
+          rgba(255, 255, 255, 0.015) 1px,
+          transparent 1px,
+          transparent 3px
         );
-      background-attachment: fixed;
     }
 
-    a {
-      color: #00ffff;
-    }
-    a:visited {
-      color: #ff99ff;
-    }
+    a { color: #ffea00; }
+    a:visited { color: #ffea00; }
 
-    /* MAIN FLYER CONTAINER */
+    /* === MAIN CONTAINER === */
     .page {
       max-width: 880px;
       margin: 28px auto 40px;
-      padding: 16px;
-      border: 3px dashed #00ffcc;
-      outline: 4px solid #ff00aa;
-      background-color: #000011;
-      box-shadow:
-        0 0 24px rgba(0, 0, 0, 0.95),
-        6px 6px 0 rgba(255, 0, 170, 0.6),
-        -4px -4px 0 rgba(0, 255, 204, 0.5);
-      transform: rotate(-0.6deg);
+      padding: 18px;
+      border: 3px solid #ffffff;
+      outline: 5px solid #ff0000;
+      background-color: #000000;
+      box-shadow: 0 0 20px rgba(0,0,0,0.9);
     }
 
+    /* === HEADER === */
     .header {
       text-align: center;
       margin-bottom: 4px;
     }
+
     .header h1 {
-      font-size: 34px;
-      margin-bottom: 4px;
+      font-size: 36px;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #fffb00;
-      text-shadow:
-        0 0 6px #ff0000,
-        -2px -2px 0 #000000,
-        2px 2px 0 #00ffcc;
-      transform: rotate(-1.8deg);
-      display: inline-block;
+      letter-spacing: 2px;
+      color: #ffea00;
       padding: 4px 12px;
-      border: 2px solid #ffffff;
-      background: #000000;
-    }
-    .header h1:hover {
-      transform: rotate(-3deg) scale(1.03);
+      border: 3px solid #ff0000;
+      display: inline-block;
+
+      /* punk roughness without cuteness */
       text-shadow:
-        0 0 10px #ff0000,
-        0 0 18px #ff00ff;
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        0 0 8px #ff0000;
     }
 
     .subtitle {
       font-size: 11px;
-      color: #cccccc;
-      margin-top: 4px;
-    }
-    .subtitle span {
-      font-weight: bold;
-    }
-
-    .under-construction {
-      font-size: 11px;
-      color: #ffcc00;
-      margin-top: 5px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      margin-top: 6px;
+      letter-spacing: 0.5px;
     }
 
     .blink {
-      animation: blink 1s step-start 0s infinite;
+      animation: blink 1s step-start infinite;
     }
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
+    @keyframes blink { 50% { opacity: 0; } }
 
-    /* NAVIGATION */
-    .nav {
-      text-align: center;
-      margin: 16px 0 12px;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .nav a {
-      margin: 0 4px;
-      text-decoration: none;
-      padding: 3px 6px;
-      border-radius: 4px;
-      border: 1px solid #00ffcc;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 2px 2px 0 #ff00aa;
-      display: inline-block;
-    }
-    .nav a:hover {
-      background: #00ffcc;
-      color: #000000;
-      transform: translate(-1px, -1px) rotate(-1deg);
-      box-shadow: 4px 4px 0 #ff00aa;
-    }
-
-    hr {
-      border: 0;
-      border-top: 2px solid #00ffff;
-      margin: 10px 0 12px;
-    }
-
-    /* BREAKING NEWS STRIP */
-    .marquee-box {
-      border: 2px solid #ff0000;
-      padding: 8px;
-      margin: 10px 0;
-      background-color: #220000;
-      font-size: 12px;
-      color: #ffcccc;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    }
-
-    /* SECTION HEADERS */
-    .section-title {
-      font-size: 16px;
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-top: 20px;
-      margin-bottom: 4px;
-      color: #fffb00;
-      text-shadow: 0 0 4px #ff00ff;
-      display: inline-block;
-      position: relative;
-      padding: 2px 6px 2px 0;
-    }
-    .section-title::before {
-      content: "";
-      position: absolute;
-      left: -6px;
-      top: 50%;
-      width: 110%;
-      height: 2px;
-      background: linear-gradient(90deg, #ff00ff, #00ffcc);
-      transform: translateY(-50%);
-      z-index: -1;
-    }
-
-    .content {
-      font-size: 13px;
-      line-height: 1.5;
-      margin-top: 4px;
-    }
-
-    /* PLAYER BOX */
-    .player-box {
-      border: 2px solid #00ffff;
-      background-color: #001a1a;
-      padding: 10px;
-      margin: 10px 0;
-      font-size: 13px;
-      box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
-      transform: rotate(0.4deg);
-    }
-    .player-box:hover {
-      transform: rotate(-0.4deg) translateY(-1px);
-      box-shadow: 0 0 16px rgba(0, 255, 204, 0.9);
-    }
-
-    .warning {
+    .under-construction {
       font-size: 11px;
-      color: #ff9999;
-      margin-top: 4px;
-      font-style: italic;
-    }
-
-    /* TABLE */
-    .table-schedule {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 8px;
-      font-size: 12px;
-    }
-    .table-schedule th,
-    .table-schedule td {
-      border: 1px solid #00ffff;
-      padding: 4px;
-      text-align: left;
-    }
-    .table-schedule th {
-      background-color: #001133;
-    }
-
-    /* SPONSOR / CORP BLOCK */
-    .corp-dig {
-      font-size: 12px;
-      background-color: #220022;
-      border: 1px dashed #ff00ff;
-      padding: 6px;
-      margin-top: 8px;
-      box-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
-    }
-
-    ul {
-      margin-top: 4px;
-      padding-left: 18px;
-    }
-
-    .punk-note {
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #ff66ff;
-    }
-
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 10px;
-      color: #aaaaaa;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="page">
-    <div class="header">
-      <h1>UNEMPLOYMENT RADIO</h1>
-      <div class="subtitle">
-        <span class="blink">***</span>
-        online radio by the unemployed, for the aspiring unemployed
-        <span class="blink">***</span>
-      </div>
-      <div class="under-construction">
-        🚧 SITE, LIFE, AND CAREER UNDER CONSTRUCTION 🚧
-      </div>
-    </div>
-
-    <div class="nav">
-      <a href="#listen">[ LISTEN LIVE ]</a> |
-      <a href="#about">[ ABOUT ]</a> |
-      <a href="#mog-hour">[ THE MOG HOUR ]</a> |
-      <a href="#join">[ JOIN US ]</a> |
-      <a href="#sponsors">[ SPONSORS ]</a>
-    </div>
-
-    <hr />
-
-    <div class="marquee-box">
-      <strong>BREAKING NEWS:</strong>
-      You are wasting your incredible talents and brainpower on something that isn’t fulfilling, meaningful, or impactful. 
-      Your employer doesn't care about you. You know deep inside that if you disappeared tomorrow, your team would replace you with a slide deck made by chatgpt.
-    </div>
-
-    <a id="listen"></a>
-    <div class="section-title">Listen Live</div>
-    <div class="content">
-      <p>
-        One day soon, you’ll click play and actually hear Unemployment Radio.
-        For now, this is the spiritual waiting room where the punk inside you keeps whispering
-        that you were never meant to clock in...
-      </p>
-
-      <div class="player-box">
-        <strong>Unemployment Radio Player (Coming Soon)</strong><br /><br />
-        <!-- Replace this iframe with your real Caster.fm / other embed once you have it -->
-        <iframe
-          src="https://example.com/your-stream-player"
-          width="100%"
-          height="80"
-          frameborder="0"
-          title="Fake Mog Player"
-        ></iframe>
-        <div class="warning">
-          If nothing plays, that’s not an error. We're just extremely busy.
-        </div>
-      </div>
-    </div>
-
-    <a id="mog-hour"></a>
-    <div class="section-title">The Mog Hour (Flagship Show)</div>
-    <div class="content">
-      <p>
-        <strong>The Mog Hour</strong> is a 1-hour show hosted by mog:
-        The Mog Hour drops every Wednesday from 4–5pm — right when you start to itch from that corporate leash around your neck and you’re debating whether to pretend to “finish one last thing.”
-        It’s the inaugural and for now, the only show on Unemployment Radio. A lone hour of the week cutting through the corporate noise.
-        
-        Eventually, mog will write some words about why this whole thing exists. For now, just know it began when he stuck it to the man. 
-      </p>
-
-      <p>Vibes:</p>
-      <ul>
-        <li>31% shitty NPR, 65% okay music, 4% brainwash</li>
-        <li>A rogue transmission beaming straight into your cubicle-rotted soul</li>
-        <li>Like pirate radio for quiet quitters</li>
-      </ul>
-    </div>
-
-    <a id="about"></a>
-    <div class="section-title">About Unemployment Radio</div>
-    <div class="content">
-      <p>
-        Unemployment Radio's tiny online "radio station”. Our mission is to ensure
-        that radio of the people, by the unemployed people, for the aspring unemployed people, shall not perish from the earth.
-      </p>
-    </div>
-
-    <a id="join"></a>
-    <div class="section-title">Join Us</div>
-    <div class="content">
-      <p>
-        Are you unemployed? Want a way to spend 1-2 hours a week? Regret not doing college radio? If you answered yes to these questions, then let's get in touch. 
-      </p>
-
-      <p>
-       
-        <span class="punk-note">NO COVER, NO DRESS CODE, NO HR.</span>
-      </p>
-    </div>
-
-    <a id="sponsors"></a>
-    <div class="section-title">In Loving Memory</div>
-    <div class="content">
-      <div class="corp-dig">
-        <strong>We're brought to you by: no one, obviously.</strong><br />
-        Just powered by the ghosts of DH, HP, and VY — three unforgettable masters of their craft.
-        <ul>
-  
-        </ul>
-      </div>
-    </div>
-
-    <hr />
-
-    <div class="footer">
-      <div>© 2025 Unemployment Radio · All rights reserved, unlike your job security.</div>
-      <div>Best consumed during and after emotionally checking out.</div>
-    </div>
-  </div>
-
-  <script>
-    // (Optional) keep this here if we ever add an element with id="year"
-    // document.getElementById('year')?.textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+      color: #ffea00;
+      margin-top: 5px;
+      text-transform: upp
