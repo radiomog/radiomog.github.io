@@ -8,33 +8,110 @@
   <style>
     /* === GLOBAL === */
     body {
-      background-color: #0a0a0a;
+      background-color: #050505;
       color: #ffffff;
       font-family: "Comic Sans MS", "Comic Sans", Geneva, sans-serif;
       cursor: crosshair;
-
-      /* gritty photocopy texture */
+      /* grainy photocopy background */
       background-image:
         repeating-linear-gradient(
           0deg,
-          rgba(255, 255, 255, 0.015) 0px,
-          rgba(255, 255, 255, 0.015) 1px,
+          rgba(255, 255, 255, 0.02) 0px,
+          rgba(255, 255, 255, 0.02) 1px,
           transparent 1px,
           transparent 3px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.01) 0px,
+          rgba(255, 255, 255, 0.01) 2px,
+          transparent 2px,
+          transparent 5px
         );
     }
 
     a { color: #ffea00; }
     a:visited { color: #ffea00; }
 
-    /* === MAIN CONTAINER === */
-    .page {
-      max-width: 880px;
-      margin: 28px auto 40px;
-      padding: 18px;
+    /* === "ZINE" WRAPPER WITH FAKE PAPER LAYERS === */
+    .page-wrapper {
+      position: relative;
+      max-width: 900px;
+      margin: 32px auto 48px;
+      padding: 0 6px;
+    }
+
+    /* fake paper behind, slightly offset like glued layers */
+    .page-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -14px -10px;
+      background: #111111;
       border: 3px solid #ffffff;
-      outline: 5px solid #ff0000;
+      transform: rotate(-1.5deg);
+      opacity: 0.9;
+      z-index: 0;
+    }
+
+    .page-wrapper::after {
+      content: "";
+      position: absolute;
+      inset: -28px 20px 10px -20px;
+      border: 2px dashed #ff0000;
+      opacity: 0.5;
+      transform: rotate(1.3deg);
+      z-index: 0;
+    }
+
+    /* tape at the corners */
+    .tape {
+      position: absolute;
+      width: 70px;
+      height: 16px;
+      background: linear-gradient(135deg, #f5f5f5 0%, #dcdcdc 100%);
+      box-shadow: 0 0 6px rgba(0,0,0,0.6);
+      opacity: 0.85;
+      z-index: 3;
+    }
+    .tape.top-left {
+      top: -10px;
+      left: 28px;
+      transform: rotate(-8deg);
+    }
+    .tape.top-right {
+      top: -12px;
+      right: 34px;
+      transform: rotate(6deg);
+    }
+
+    /* staple marks */
+    .staple {
+      position: absolute;
+      width: 22px;
+      height: 2px;
+      background: #c0c0c0;
+      box-shadow: 0 0 2px #000;
+      z-index: 3;
+    }
+    .staple.one {
+      top: -2px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-8deg);
+    }
+    .staple.two {
+      bottom: 4px;
+      right: 60px;
+      transform: rotate(12deg);
+    }
+
+    /* === MAIN PAGE === */
+    .page {
+      position: relative;
+      z-index: 1;
+      border: 3px solid #ffffff;
+      outline: 4px solid #ff0000;
       background-color: #000000;
+      padding: 18px;
       box-shadow: 0 0 20px rgba(0,0,0,0.9);
     }
 
@@ -50,14 +127,19 @@
       letter-spacing: 2px;
       color: #ffea00;
       padding: 4px 12px;
-      border: 3px solid #ff0000;
+      border: 3px solid #ffffff;
       display: inline-block;
-
-      /* punk roughness without cuteness */
+      background: #000000;
       text-shadow:
         2px 2px 0 #000,
         -2px -2px 0 #000,
         0 0 8px #ff0000;
+      /* crooked title ONLY */
+      transform: rotate(-3deg);
+    }
+
+    .header h1:hover {
+      transform: rotate(-4deg) scale(1.03);
     }
 
     .subtitle {
@@ -75,4 +157,227 @@
       font-size: 11px;
       color: #ffea00;
       margin-top: 5px;
-      text-transform: upp
+      text-transform: uppercase;
+    }
+
+    /* === NAVIGATION === */
+    .nav {
+      text-align: center;
+      margin: 18px 0 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .nav a {
+      display: inline-block;
+      padding: 3px 8px;
+      margin: 2px 3px;
+      border: 2px solid #ffffff;
+      background: #111;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 2px 2px 0 #ff0000;
+    }
+
+    .nav a:hover {
+      background: #ffea00;
+      color: #000;
+      box-shadow: 3px 3px 0 #ff0000;
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #ff0000;
+      margin: 20px 0;
+    }
+
+    /* === BREAKING NEWS === */
+    .marquee-box {
+      border: 2px solid #ff0000;
+      padding: 8px;
+      margin: 10px 0;
+      background-color: #1a0000;
+      color: #ffcccc;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 12px;
+      box-shadow: inset 0 0 12px rgba(255, 0, 0, 0.4);
+    }
+
+    /* === SECTION TITLES === */
+    .section-title {
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-top: 22px;
+      margin-bottom: 4px;
+      color: #ffffff;
+      padding-bottom: 3px;
+      border-bottom: 3px solid #ff0000;
+      letter-spacing: 1px;
+    }
+
+    .content {
+      font-size: 13px;
+      line-height: 1.55;
+      margin-top: 6px;
+    }
+
+    /* === PLAYER BOX (straight, solid) === */
+    .player-box {
+      border: 2px solid #ffffff;
+      background-color: #0d0d0d;
+      padding: 12px;
+      margin: 12px 0;
+      box-shadow: 0 0 10px rgba(255,255,255,0.12);
+    }
+
+    .player-box iframe {
+      background: #111;
+    }
+
+    .warning {
+      font-size: 11px;
+      color: #ff9999;
+      margin-top: 4px;
+      font-style: italic;
+    }
+
+    /* === SPONSOR / ANARCHO BLOCK === */
+    .corp-dig {
+      font-size: 12px;
+      background-color: #140010;
+      border: 2px dotted #ff0000;
+      padding: 8px;
+      margin-top: 8px;
+      box-shadow: inset 0 0 10px rgba(255,0,0,0.4);
+    }
+
+    ul {
+      margin-top: 4px;
+      padding-left: 18px;
+    }
+
+    .punk-note {
+      color: #ff0000;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 10px;
+      color: #aaaaaa;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="tape top-left"></div>
+    <div class="tape top-right"></div>
+    <div class="staple one"></div>
+    <div class="staple two"></div>
+
+    <div class="page">
+      <div class="header">
+        <h1>UNEMPLOYMENT RADIO</h1>
+        <div class="subtitle">
+          <span class="blink">***</span>
+          online radio by the unemployed, for the aspiring unemployed
+          <span class="blink">***</span>
+        </div>
+        <div class="under-construction">
+          🚧 SITE, LIFE, AND CAREER UNDER CONSTRUCTION 🚧
+        </div>
+      </div>
+
+      <div class="nav">
+        <a href="#listen">[ LISTEN LIVE ]</a>
+        <a href="#about">[ ABOUT ]</a>
+        <a href="#mog-hour">[ THE MOG HOUR ]</a>
+        <a href="#join">[ JOIN US ]</a>
+        <a href="#sponsors">[ SPONSORS ]</a>
+      </div>
+
+      <hr />
+
+      <div class="marquee-box">
+        <strong>BREAKING NEWS:</strong>
+        You are wasting your incredible talents and brainpower on something that isn’t fulfilling, meaningful, or impactful. 
+        Your employer doesn't care about you. You know deep inside that if you disappeared tomorrow, your team would replace you with a slide deck made by chatgpt.
+      </div>
+
+      <a id="listen"></a>
+      <div class="section-title">Listen Live</div>
+      <div class="content">
+        <p>
+          One day soon, you’ll click play and actually hear Unemployment Radio.
+          For now, this is the spiritual waiting room where the punk inside you keeps whispering
+          that you were never meant to clock in...
+        </p>
+
+        <div class="player-box">
+          <strong>Unemployment Radio Player (Coming Soon)</strong><br><br>
+          <!-- Replace this iframe with your real Caster.fm / other embed once you have it -->
+          <iframe src="https://example.com/your-stream-player" width="100%" height="80" frameborder="0"></iframe>
+          <div class="warning">If nothing plays, that’s not an error. We're just extremely busy.</div>
+        </div>
+      </div>
+
+      <a id="mog-hour"></a>
+      <div class="section-title">The Mog Hour (Flagship Show)</div>
+      <div class="content">
+        <p>
+          <strong>The Mog Hour</strong> is a 1-hour show hosted by mog:
+          The Mog Hour drops every Wednesday from 4–5pm — right when you start to itch from that corporate leash around your neck and you’re debating whether to pretend to “finish one last thing.”
+          It’s the inaugural and for now, the only show on Unemployment Radio. A lone hour of the week cutting through the corporate noise.
+          Eventually, mog will write some words about why this whole thing exists. For now, just know it began when he stuck it to the man. 
+        </p>
+        <p>Vibes:</p>
+        <ul>
+          <li>31% shitty NPR, 65% okay music, 4% brainwash</li>
+          <li>A rogue transmission beaming straight into your cubicle-rotted soul</li>
+          <li>Like pirate radio for quiet quitters</li>
+        </ul>
+      </div>
+
+      <a id="about"></a>
+      <div class="section-title">About Unemployment Radio</div>
+      <div class="content">
+        <p>
+          Unemployment Radio's tiny online "radio station”. Our mission is to ensure
+          that radio of the people, by the unemployed people, for the aspring unemployed people, shall not perish from the earth.
+        </p>
+      </div>
+
+      <a id="join"></a>
+      <div class="section-title">Join Us</div>
+      <div class="content">
+        <p>
+          Are you unemployed? Want a way to spend 1-2 hours a week? Regret not doing college radio?
+          If you answered yes to these questions, then let's get in touch.
+        </p>
+        <p><span class="punk-note"> NO ALL HANDS, NO DRESS CODE, NO HR.</span></p>
+      </div>
+
+      <a id="sponsors"></a>
+      <div class="section-title">In Loving Memory</div>
+      <div class="content">
+        <div class="corp-dig">
+          <strong>We're brought to you by: no one, obviously.</strong><br>
+          Just powered by the ghosts of DH, HP, KB, and VY — four unforgettable masters of their craft.
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="footer">
+        <div>© 2025 Unemployment Radio · All rights reserved, unlike your job security.</div>
+        <div>Best consumed during and after emotionally checking out.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
