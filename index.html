@@ -121,6 +121,7 @@
       transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
         transform 0.12s ease;
       cursor: pointer;
+      background: transparent;
     }
 
     .nav-link:hover {
@@ -322,27 +323,10 @@
       margin-bottom: 8px;
     }
 
-    .player-placeholder {
-      border-radius: 999px;
-      border: 1px dashed rgba(255, 255, 255, 0.2);
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      font-size: 13px;
-    }
-
-    .player-placeholder span {
-      color: var(--text-muted);
-    }
-
-    .player-chip {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 11px;
+    .player-embed {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
     }
 
     .hero-tagline {
@@ -587,11 +571,6 @@
         width: 100%;
         justify-content: center;
       }
-
-      .player-placeholder {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   </style>
 </head>
@@ -637,7 +616,7 @@
         <div class="pill-row">
           <div class="pill">
             <span class="pill-dot"></span>
-            <span>On Air Soon</span>
+            <span>Soft launch mode</span>
           </div>
           <div class="pill">
             <span>New show:</span>
@@ -648,7 +627,8 @@
         <h1 class="hero-title">Welcome to <span style="color: var(--accent);">Unemployment Radio</span>.</h1>
         <p class="hero-subtitle">
           A lo-fi, high-feels online station for the in-between times. Music, stories,
-          and gentle chaos from <strong>The Mog Hour</strong> and future shows to come.
+          and gentle chaos from <strong>The Mog Hour</strong> and whatever else you
+          dream up while procrastinating your LinkedIn updates.
         </p>
 
         <div class="hero-controls" id="listen">
@@ -667,12 +647,19 @@
 
         <div class="player-shell" aria-label="Live audio player">
           <div class="player-label">Live Stream Player</div>
-          <div class="player-placeholder">
-            <span>
-              This is where your <strong>Radio.co / Live365</strong> player embed will go.<br />
-              Replace this box with their iframe once your stream is set up.
-            </span>
-            <span class="player-chip">Status: configuring the chaos</span>
+          <div class="player-embed">
+            <!--
+              TODO: Replace this iframe with the real embed code
+              from your streaming host (Caster.fm, Listen2MyRadio, etc.)
+            -->
+            <iframe
+              src="https://example.com/your-stream-player"
+              width="100%"
+              height="150"
+              frameborder="0"
+              allow="autoplay"
+              title="Unemployment Radio Player"
+            ></iframe>
           </div>
         </div>
 
@@ -727,8 +714,8 @@
         </ul>
 
         <p class="card-body" style="margin-top: 8px;">
-          When you lock your time (e.g. <strong>Thursdays, 8–9pm ET</strong>), just edit this
-          section in the HTML to keep your listeners in the loop.
+          Once you lock your time (e.g. <strong>Thursdays, 8–9pm ET</strong>), edit this
+          text in the file so your listeners know when to show up.
         </p>
       </div>
 
@@ -756,76 +743,26 @@
         </p>
         <ul class="list">
           <li>Host them on a podcast platform (or just as MP3s) and link them here</li>
-          <li>List episodes like: <strong>EP001 – Soft Launch / Panic & Playlists</strong></li>
+          <li>List episodes like: <strong>EP001 – Soft Launch / Panic &amp; Playlists</strong></li>
           <li>Add show notes, tracklists, and any chaotic footnotes</li>
         </ul>
       </div>
 
       <div class="card">
-        <h2 class="card-title">Build Out More "Pages"</h2>
-        <h3 class="card-heading">How to add more sections</h3>
+        <h2 class="card-title">More “Pages”</h2>
+        <h3 class="card-heading">How to expand later</h3>
         <p class="card-body">
-          This site is technically one page, but the <strong>hamburger menu</strong> and nav
-          links already support additional sections. To add more “pages”:
+          This is technically a single page, but the navigation and hamburger menu already
+          support more sections. To add a new “page”:
         </p>
         <ul class="list">
           <li>Duplicate a <code>&lt;section&gt;</code> block and give it a new <code>id</code></li>
           <li>Add a matching nav button with <code>data-scroll="#yourId"</code></li>
-          <li>Fill it with whatever: guest info, contact, show submissions, etc.</li>
+          <li>Fill it with guest info, contact details, submissions, whatever.</li>
         </ul>
       </div>
     </section>
 
     <footer>
       <span>© <span id="year"></span> Unemployment Radio · All rights reserved, sort of.</span>
-      <span>Built with love, doubt, and background noise.</span>
-    </footer>
-  </main>
-
-  <script>
-    // Smooth scroll for nav links
-    function handleNavClick(e) {
-      const target = e.currentTarget.getAttribute('data-scroll');
-      if (!target) return;
-      const el = document.querySelector(target);
-      if (!el) return;
-
-      e.preventDefault();
-      const headerOffset = 70;
-      const rect = el.getBoundingClientRect();
-      const offsetTop = rect.top + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-
-      // Close mobile nav after click
-      const mobileNav = document.querySelector('.nav-links-mobile');
-      const burger = document.querySelector('.hamburger');
-      if (mobileNav && burger && mobileNav.classList.contains('open')) {
-        mobileNav.classList.remove('open');
-        burger.classList.remove('open');
-        burger.setAttribute('aria-expanded', 'false');
-      }
-    }
-
-    document.querySelectorAll('[data-scroll]').forEach(btn => {
-      btn.addEventListener('click', handleNavClick);
-    });
-
-    // Hamburger toggle
-    const burger = document.querySelector('.hamburger');
-    const mobileNav = document.querySelector('.nav-links-mobile');
-
-    burger.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.toggle('open');
-      burger.classList.toggle('open', isOpen);
-      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-
-    // Year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+      <span>Built with love, doubt, and background
