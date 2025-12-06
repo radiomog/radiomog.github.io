@@ -2,17 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Unemployment Radio – Listen Live</title>
+  <title>Unemployment Radio – Sponsors</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+  <link rel="icon" href="data:,">
   <style>
-    /* === GLOBAL === */
     body {
       background-color: #050505;
       color: #ffffff;
       font-family: "Comic Sans MS", "Comic Sans", Geneva, sans-serif;
       cursor: crosshair;
-      /* grainy photocopy background */
       background-image:
         repeating-linear-gradient(
           0deg,
@@ -33,7 +31,6 @@
     a { color: #ffea00; }
     a:visited { color: #ffea00; }
 
-    /* === "ZINE" WRAPPER WITH FAKE PAPER LAYERS === */
     .page-wrapper {
       position: relative;
       max-width: 900px;
@@ -41,7 +38,6 @@
       padding: 0 6px;
     }
 
-    /* fake paper behind, slightly offset like glued layers */
     .page-wrapper::before {
       content: "";
       position: absolute;
@@ -63,7 +59,6 @@
       z-index: 0;
     }
 
-    /* tape at the corners */
     .tape {
       position: absolute;
       width: 70px;
@@ -73,18 +68,9 @@
       opacity: 0.85;
       z-index: 3;
     }
-    .tape.top-left {
-      top: -10px;
-      left: 28px;
-      transform: rotate(-8deg);
-    }
-    .tape.top-right {
-      top: -12px;
-      right: 34px;
-      transform: rotate(6deg);
-    }
+    .tape.top-left { top: -10px; left: 28px; transform: rotate(-8deg); }
+    .tape.top-right { top: -12px; right: 34px; transform: rotate(6deg); }
 
-    /* staple marks */
     .staple {
       position: absolute;
       width: 22px;
@@ -93,18 +79,9 @@
       box-shadow: 0 0 2px #000;
       z-index: 3;
     }
-    .staple.one {
-      top: -2px;
-      left: 50%;
-      transform: translateX(-50%) rotate(-8deg);
-    }
-    .staple.two {
-      bottom: 4px;
-      right: 60px;
-      transform: rotate(12deg);
-    }
+    .staple.one { top: -2px; left: 50%; transform: translateX(-50%) rotate(-8deg); }
+    .staple.two { bottom: 4px; right: 60px; transform: rotate(12deg); }
 
-    /* === MAIN PAGE === */
     .page {
       position: relative;
       z-index: 1;
@@ -115,12 +92,7 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.9);
     }
 
-    /* === HEADER === */
-    .header {
-      text-align: center;
-      margin-bottom: 4px;
-    }
-
+    .header { text-align: center; margin-bottom: 4px; }
     .header h1 {
       font-size: 36px;
       text-transform: uppercase;
@@ -134,40 +106,17 @@
         2px 2px 0 #000,
         -2px -2px 0 #000,
         0 0 8px #ff0000;
-      /* crooked title ONLY */
       transform: rotate(-3deg);
     }
+    .header h1:hover { transform: rotate(-4deg) scale(1.03); }
 
-    .header h1:hover {
-      transform: rotate(-4deg) scale(1.03);
-    }
-
-    .subtitle {
-      font-size: 11px;
-      margin-top: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    .blink {
-      animation: blink 1s step-start infinite;
-    }
+    .subtitle { font-size: 11px; margin-top: 6px; letter-spacing: 0.5px; }
+    .blink { animation: blink 1s step-start infinite; }
     @keyframes blink { 50% { opacity: 0; } }
 
-    .under-construction {
-      font-size: 11px;
-      color: #ffea00;
-      margin-top: 5px;
-      text-transform: uppercase;
-    }
+    .under-construction { font-size: 11px; color: #ffea00; margin-top: 5px; text-transform: uppercase; }
 
-    /* === NAVIGATION === */
-    .nav {
-      text-align: center;
-      margin: 18px 0 12px;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-
+    .nav { text-align: center; margin: 18px 0 12px; font-size: 12px; text-transform: uppercase; }
     .nav a {
       display: inline-block;
       padding: 3px 8px;
@@ -178,33 +127,10 @@
       letter-spacing: 0.5px;
       box-shadow: 2px 2px 0 #ff0000;
     }
+    .nav a:hover { background: #ffea00; color: #000; box-shadow: 3px 3px 0 #ff0000; }
 
-    .nav a:hover {
-      background: #ffea00;
-      color: #000;
-      box-shadow: 3px 3px 0 #ff0000;
-    }
+    hr { border: none; border-top: 2px solid #ff0000; margin: 20px 0; }
 
-    hr {
-      border: none;
-      border-top: 2px solid #ff0000;
-      margin: 20px 0;
-    }
-
-    /* === BREAKING NEWS === */
-    .marquee-box {
-      border: 2px solid #ff0000;
-      padding: 8px;
-      margin: 10px 0;
-      background-color: #1a0000;
-      color: #ffcccc;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 12px;
-      box-shadow: inset 0 0 12px rgba(255, 0, 0, 0.4);
-    }
-
-    /* === SECTION TITLES === */
     .section-title {
       font-size: 18px;
       font-weight: bold;
@@ -217,43 +143,20 @@
       letter-spacing: 1px;
     }
 
-    .content {
-      font-size: 13px;
-      line-height: 1.55;
-      margin-top: 6px;
+    .content { font-size: 13px; line-height: 1.55; margin-top: 6px; }
+
+    .corp-dig {
+      font-size: 12px;
+      background-color: #140010;
+      border: 2px dotted #ff0000;
+      padding: 8px;
+      margin-top: 8px;
+      box-shadow: inset 0 0 10px rgba(255,0,0,0.4);
     }
 
-    /* === PLAYER BOX (straight, solid) === */
-    .player-box {
-      border: 2px solid #ffffff;
-      background-color: #0d0d0d;
-      padding: 12px;
-      margin: 12px 0;
-      box-shadow: 0 0 10px rgba(255,255,255,0.12);
-    }
-
-    .player-box iframe {
-      background: #111;
-      border: 2px solid #ff0000;
-      box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.35);
-    }
-
-    .warning {
-      font-size: 11px;
-      color: #ff9999;
-      margin-top: 4px;
-      font-style: italic;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 24px;
-      font-size: 10px;
-      color: #aaaaaa;
-    }
+    .footer { text-align: center; margin-top: 24px; font-size: 10px; color: #aaaaaa; }
   </style>
 </head>
-
 <body>
   <div class="page-wrapper">
     <div class="tape top-left"></div>
@@ -284,26 +187,15 @@
 
       <hr />
 
-      <div class="marquee-box">
-        <strong>BREAKING NEWS:</strong>
-        You are wasting your incredible talents and brainpower on something that isn’t fulfilling, meaningful, or impactful.
-        Your employer doesn't care about you. You know deep inside that if you disappeared tomorrow, your team would replace you with a slide deck made by chatgpt.
-      </div>
-
-      <div class="section-title">Listen Live</div>
+      <div class="section-title">In Loving Memory</div>
       <div class="content">
-        <p>
-          One day soon, you’ll click play and actually hear Unemployment Radio.
-          For now, this is the spiritual waiting room where the punk inside you keeps whispering
-          that you were never meant to clock in...
-        </p>
-
-        <div class="player-box">
-          <strong>Unemployment Radio Player (Coming Soon)</strong><br><br>
-          <!-- Web radio coming soon. Meanwhile, the webcam feed below is wired up through VDO.Ninja. -->
-          <iframe src="https://vdo.ninja/?view=unemploymentradio&autostart&transparent" width="100%" height="260" frameborder="0" allow="autoplay; camera; microphone; fullscreen; display-capture"></iframe>
-          <div class="warning">If the box is empty, the host hasn’t started streaming their webcam yet.</div>
+        <div class="corp-dig">
+          <strong>We're brought to you by: no one, obviously.</strong><br>
+          Just powered by the ghosts of DH, HP, KB, and VY — four unforgettable masters of their craft.
         </div>
+        <p>
+          If you want to bankroll this circus, come with jokes, not jargon. Until then, we'll keep running on caffeine fumes and spite.
+        </p>
       </div>
 
       <hr />
