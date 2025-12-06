@@ -2,59 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Unemployment Radio - The Mog Hour</title>
+  <title>Unemployment Radio - Live From The Void</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
-      background-color: #fdfbe4;
-      color: #000000;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      background-color: #000033;
+      color: #ffffff;
+      font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, sans-serif;
+      background-image: url("https://transparenttextures.com/patterns/asfalt-dark.png");
     }
     a {
-      color: #0000ee;
+      color: #00ffff;
     }
     a:visited {
-      color: #551a8b;
+      color: #ff99ff;
     }
     .page {
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 850px;
+      margin: 10px auto 30px;
       padding: 10px;
-      border: 3px double #000000;
-      background-color: #ffffff;
+      border: 4px ridge #00ffff;
+      background-color: #000011;
     }
     .header {
       text-align: center;
     }
     .header h1 {
-      font-size: 32px;
-      margin-bottom: 4px;
+      font-size: 30px;
+      margin-bottom: 2px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
+      color: #ffcc00;
+      text-shadow: 0 0 6px #ff0000;
     }
     .subtitle {
-      font-size: 12px;
-      color: #444444;
+      font-size: 11px;
+      color: #cccccc;
+    }
+    .subtitle span {
+      font-weight: bold;
     }
     .nav {
       text-align: center;
-      margin: 15px 0;
+      margin: 12px 0;
+      font-size: 12px;
     }
     .nav a {
       margin: 0 6px;
-      font-size: 12px;
       text-decoration: underline;
     }
     hr {
       border: 0;
-      border-top: 2px solid #000000;
+      border-top: 2px solid #00ffff;
     }
     .marquee-box {
-      border: 2px dashed #ff0000;
+      border: 3px double #ff0000;
       padding: 6px;
       margin: 10px 0;
-      background-color: #fff7c2;
+      background-color: #220000;
       font-size: 12px;
+      color: #ffcccc;
     }
     .section-title {
       font-size: 16px;
@@ -62,21 +69,24 @@
       font-weight: bold;
       margin-top: 15px;
       margin-bottom: 4px;
+      color: #ffcc00;
+      text-shadow: 0 0 4px #ff00ff;
     }
     .content {
       font-size: 13px;
-      line-height: 1.4;
+      line-height: 1.5;
     }
     .player-box {
-      border: 2px solid #000000;
-      background-color: #e3ffe7;
+      border: 2px solid #00ffff;
+      background-color: #001a1a;
       padding: 10px;
       margin: 10px 0;
       font-size: 13px;
     }
     .warning {
       font-size: 11px;
-      color: #aa0000;
+      color: #ff9999;
+      margin-top: 4px;
     }
     .table-schedule {
       width: 100%;
@@ -86,21 +96,40 @@
     }
     .table-schedule th,
     .table-schedule td {
-      border: 1px solid #000000;
+      border: 1px solid #00ffff;
       padding: 4px;
       text-align: left;
+    }
+    .table-schedule th {
+      background-color: #001133;
     }
     .footer {
       text-align: center;
       margin-top: 20px;
       font-size: 10px;
-      color: #555555;
+      color: #aaaaaa;
     }
     .blink {
       animation: blink 1s step-start 0s infinite;
     }
     @keyframes blink {
       50% { opacity: 0; }
+    }
+    .under-construction {
+      font-size: 11px;
+      color: #ffcc00;
+      margin-top: 5px;
+    }
+    .corp-dig {
+      font-size: 12px;
+      background-color: #220022;
+      border: 1px dashed #ff00ff;
+      padding: 6px;
+      margin-top: 8px;
+    }
+    ul {
+      margin-top: 4px;
+      padding-left: 18px;
     }
   </style>
 </head>
@@ -110,31 +139,35 @@
       <h1>UNEMPLOYMENT RADIO</h1>
       <div class="subtitle">
         <span class="blink">***</span>
-        Broadcasting live from the “what am I doing with my life?” era
+        Live from the “I quit / got laid off / spiritually resigned” era
         <span class="blink">***</span>
+      </div>
+      <div class="under-construction">
+        🚧 SITE UNDER CONSTRUCTION 🚧 (like my life, career, and sense of direction)
       </div>
     </div>
 
     <div class="nav">
-      <a href="#listen">[ Listen Live ]</a> |
-      <a href="#mog-hour">[ The Mog Hour ]</a> |
-      <a href="#about">[ About ]</a> |
-      <a href="#contact">[ Contact(?) ]</a>
+      <a href="#listen">[ LISTEN LIVE ]</a> |
+      <a href="#mog-hour">[ THE MOG HOUR ]</a> |
+      <a href="#about">[ ABOUT ]</a> |
+      <a href="#corp">[ CORPORATE SURVIVORS ]</a>
     </div>
 
     <hr />
 
     <div class="marquee-box">
-      <!-- fake marquee vibe; real marquee is deprecated but this is safer -->
-      <strong>NOW LOADING:</strong>
-      The Mog Hour · Episode 001 · Soft launch · Mild panic · Good tunes
+      <strong>BREAKING NEWS:</strong>
+      The economy is fake, your job is fake, but this radio station is VERY real.
+      Featuring: The Mog Hour · Episode 001 · Panic, Playlists &amp; Professional Uncertainty.
     </div>
 
     <a id="listen"></a>
     <div class="section-title">Listen Live</div>
     <div class="content">
       <p>
-        This is where the actual radio stream will go. For now, it’s just pretending.
+        One day soon, you’ll click play and actually hear Unemployment Radio.
+        For now, this is the spiritual waiting room.
       </p>
 
       <div class="player-box">
@@ -152,8 +185,7 @@
         >
         </iframe>
         <div class="warning">
-          If you’re seeing this grey box, it means the stream isn’t wired up yet.
-          That’s okay. We’re all figuring things out.
+          If nothing plays, that’s not an error. That’s the unemployment experience.
         </div>
       </div>
     </div>
@@ -162,12 +194,16 @@
     <div class="section-title">The Mog Hour (Flagship Show)</div>
     <div class="content">
       <p>
-        <strong>The Mog Hour</strong> is a 1-hour show hosted by Mog: part music,
-        part unemployment spiral, part cozy friend hang.
+        <strong>The Mog Hour</strong> is a 1-hour show hosted by Mog:
+        part music, part oversharing, part “should I be updating my resume right now?”
       </p>
       <p>
-        Expect: songs you actually like, stories from the in-between times, and the
-        occasional “what if I just moved to a farm” moment.
+        Vibes:
+        <ul>
+          <li>Half NPR, half group chat meltdown</li>
+          <li>Good songs, questionable life choices</li>
+          <li>For people who “left their job to figure things out” &amp; are still figuring</li>
+        </ul>
       </p>
 
       <table class="table-schedule">
@@ -181,7 +217,9 @@
           <td>The Mog Hour</td>
           <td>TBD</td>
           <td>TBD</td>
-          <td>Probably when you should be doing something else.</td>
+          <td>
+            Will probably air when everyone else is on Zoom calls that could’ve been emails.
+          </td>
         </tr>
       </table>
     </div>
@@ -190,38 +228,42 @@
     <div class="section-title">About Unemployment Radio</div>
     <div class="content">
       <p>
-        Unemployment Radio is a tiny online radio “station” for people who are somewhere
-        between jobs, plans, and identities.
+        Unemployment Radio is a tiny online “station” for people who aren’t sure what their
+        job title is right now:
+        <em>between roles, between breakdowns, between Indeed tabs.</em>
       </p>
       <p>
-        It’s not trying to be professional. It’s trying to be honest, a little funny,
-        and a place to put all the feelings that don’t fit in a LinkedIn update.
+        This is not hustle culture. This is “I took a midday walk and then lay on the floor
+        listening to music and somehow that’s my calendar for the day.”
+      </p>
+      <p>
+        It’s self-aware, mildly cursed, and trying to make all this uncertainty feel a little
+        more communal and a little less like you’re the only one doomscrolling job boards.
       </p>
     </div>
 
-    <a id="contact"></a>
-    <div class="section-title">Contact / Future Stuff</div>
+    <a id="corp"></a>
+    <div class="section-title">For Corporate Survivors</div>
     <div class="content">
-      <p>
-        One day this might have:
-      </p>
-      <ul>
-        <li>an email address</li>
-        <li>a way to send voice notes or stories</li>
-        <li>a proper schedule</li>
-        <li>maybe other shows??</li>
-      </ul>
-      <p>
-        For now, just remember this URL and come back when you hear rumours that
-        Unemployment Radio is actually on the air.
-      </p>
+      <div class="corp-dig">
+        <strong>Have a job? Congrats, I guess.</strong><br />
+        This station is:
+        <ul>
+          <li>For the girlies who “left to explore new paths” (aka collapsed)</li>
+          <li>For the guys who used to say “circle back” unironically and are now in sweatpants</li>
+          <li>For anyone who has ever written “per my last email” and meant “fight me”</li>
+        </ul>
+        If you’re still in corporate, you’re absolutely welcome here —
+        just know you’re listening to a station run by someone whose current LinkedIn headline is basically:
+        <em>“In my flop era but with taste.”</em>
+      </div>
     </div>
 
     <hr />
 
     <div class="footer">
-      <div>© <span id="year"></span> Unemployment Radio · All rights reserved (probably).</div>
-      <div>Best experienced late at night with headphones and mild existential dread.</div>
+      <div>© <span id="year"></span> Unemployment Radio · All rights reserved, unlike your benefits.</div>
+      <div>Best consumed after quitting a job, getting laid off, or emotionally checking out.</div>
     </div>
   </div>
 
