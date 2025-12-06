@@ -6,9 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
-      background-color: #000033;  
+      background-color: #050008;
       color: #ffffff;
       font-family: "Comic Sans MS", "Comic Sans", Verdana, Geneva, sans-serif;
+      cursor: crosshair;
+      background-image:
+        radial-gradient(circle at 10% 0%, #ff0077 0, transparent 55%),
+        radial-gradient(circle at 90% 100%, #00ff9d 0, transparent 55%),
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255, 255, 255, 0.03) 0px,
+          rgba(255, 255, 255, 0.03) 3px,
+          transparent 3px,
+          transparent 6px
+        );
+      background-attachment: fixed;
     }
     a {
       color: #00ffff;
@@ -17,34 +29,45 @@
       color: #ff99ff;
     }
     .page {
-      max-width: 850px;
-      margin: 20px auto 30px;
-      padding: 12px;
-      border: 4px ridge #00ffff;
+      max-width: 880px;
+      margin: 24px auto 36px;
+      padding: 14px;
+      border: 3px dashed #00ffcc;
+      outline: 4px solid #ff00aa;
       background-color: #000011;
+      box-shadow: 0 0 24px rgba(0, 0, 0, 0.9);
     }
     .header {
       text-align: center;
+      margin-bottom: 4px;
     }
     .header h1 {
-      font-size: 30px;
-      margin-bottom: 2px;
+      font-size: 32px;
+      margin-bottom: 4px;
       text-transform: uppercase;
       letter-spacing: 3px;
-      color: #ffcc00;
-      text-shadow: 0 0 6px #ff0000;
+      color: #fffb00;
+      text-shadow: 0 0 6px #ff0000, -2px -2px 0 #000000;
+      transform: rotate(-1.2deg);
+      display: inline-block;
+      padding: 4px 10px;
+      border: 2px solid #ffffff;
+      background: #000000;
     }
     .subtitle {
       font-size: 11px;
       color: #cccccc;
+      margin-top: 4px;
     }
     .subtitle span {
       font-weight: bold;
     }
     .nav {
       text-align: center;
-      margin: 12px 0;
+      margin: 14px 0;
       font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .nav a {
       margin: 0 6px;
@@ -53,27 +76,34 @@
     hr {
       border: 0;
       border-top: 2px solid #00ffff;
+      margin: 10px 0;
     }
     .marquee-box {
-      border: 3px double #ff0000;
-      padding: 6px;
+      border: 2px solid #ff0000;
+      padding: 8px;
       margin: 10px 0;
       background-color: #220000;
       font-size: 12px;
       color: #ffcccc;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
     .section-title {
       font-size: 16px;
       text-transform: uppercase;
       font-weight: bold;
-      margin-top: 15px;
+      margin-top: 18px;
       margin-bottom: 4px;
-      color: #ffcc00;
+      color: #fffb00;
       text-shadow: 0 0 4px #ff00ff;
+      border-bottom: 1px solid #fffb00;
+      display: inline-block;
+      padding-right: 4px;
     }
     .content {
       font-size: 13px;
       line-height: 1.5;
+      margin-top: 4px;
     }
     .player-box {
       border: 2px solid #00ffff;
@@ -81,11 +111,13 @@
       padding: 10px;
       margin: 10px 0;
       font-size: 13px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
     }
     .warning {
       font-size: 11px;
       color: #ff9999;
       margin-top: 4px;
+      font-style: italic;
     }
     .table-schedule {
       width: 100%;
@@ -118,6 +150,7 @@
       font-size: 11px;
       color: #ffcc00;
       margin-top: 5px;
+      text-transform: uppercase;
     }
     .corp-dig {
       font-size: 12px;
@@ -129,6 +162,11 @@
     ul {
       margin-top: 4px;
       padding-left: 18px;
+    }
+    .punk-note {
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #ff66ff;
     }
   </style>
 </head>
@@ -143,7 +181,7 @@
         <span class="blink">***</span>
       </div>
       <div class="under-construction">
-        🚧 SITE, LIFE, AND CAREER ALL UNDER CONSTRUCTION 🚧
+        🚧 SITE, LIFE, AND CAREER UNDER CONSTRUCTION 🚧
       </div>
     </div>
 
@@ -167,12 +205,14 @@
     <div class="section-title">Listen Live</div>
     <div class="content">
       <p>
-        One day soon, you’ll click play and actually hear Unemployment Radio. 
-        For now, this is the spiritual waiting room where the punk inside you keeps whispering that you were never meant to clock in...
+        One day soon, you’ll click play and actually hear Unemployment Radio.
+        For now, this is the spiritual waiting room where the punk inside you keeps whispering
+        that you were never meant to clock in...
       </p>
 
       <div class="player-box">
         <strong>Unemployment Radio Player (Coming Soon)</strong><br /><br />
+        <!-- Replace this iframe with your real Caster.fm / other embed once you have it -->
         <iframe
           src="https://example.com/your-stream-player"
           width="100%"
@@ -190,7 +230,7 @@
     <div class="section-title">The Mog Hour (Flagship Show)</div>
     <div class="content">
       <p>
-        <strong>The Mog Hour</strong> is a 1-hour show hosted by Mog:
+        <strong>The Mog Hour</strong> is a 1-hour show hosted by mog:
         The Mog Hour drops every Wednesday from 4–5pm — right when you start to itch from that corporate leash around your neck and you’re debating whether to pretend to “finish one last thing.”
         It’s the inaugural and for now, the only show on Unemployment Radio. A lone hour of the week cutting through the corporate noise.
         
@@ -199,20 +239,18 @@
 
       <p>Vibes:</p>
       <ul>
-        <li>31% shitty NPR, 65% okay music, 4% brainwash </li>
+        <li>31% shitty NPR, 65% okay music, 4% brainwash</li>
         <li>A rogue transmission beaming straight into your cubicle-rotted soul</li>
         <li>Like pirate radio for quiet quitters</li>
       </ul>
+    </div>
 
     <a id="about"></a>
     <div class="section-title">About Unemployment Radio</div>
     <div class="content">
       <p>
         Unemployment Radio's tiny online "radio station”. Our mission is to ensure
-        that radio of the people, by the unemployed people, for the aspring unemployed people, shall not perish from the earth. 
-
-      </p>
-
+        that radio of the people, by the unemployed people, for the aspring unemployed people, shall not perish from the earth.
       </p>
     </div>
 
@@ -220,22 +258,25 @@
     <div class="section-title">Join Us</div>
     <div class="content">
       <p>
-        Want to contribute? Want to make a show? Want to submit an unemployment story,
-        layoff saga, or corporate horror anecdote? Eventually this will be the place.
+        Are you unemployed? Want a way to spend 1-2 hours a week? Regret not doing college radio? If you answered yes to these questions, then let's get in touch. 
       </p>
 
       <p>
-        For now, just spiritually align yourself with the unemployed and return here often.
+       
+        <span class="punk-note">NO COVER, NO DRESS CODE, NO HR.</span>
       </p>
     </div>
 
     <a id="sponsors"></a>
     <div class="section-title">In Loving Memory</div>
     <div class="content">
-        <strong> Were brought to you by: No one, I guess. </strong><br />
-        </ul>
-        Just powered by the ghosts of DH, HP, and VY— three unfor masters of their craft. 
+      <div class="corp-dig">
+        <strong>We're brought to you by: no one, obviously.</strong><br />
+        Just powered by the ghosts of DH, HP, and VY — three unforgettable masters of their craft.
         <ul>
+  
+        </ul>
+      </div>
     </div>
 
     <hr />
